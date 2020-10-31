@@ -3,10 +3,6 @@ const tagesschauData = await new Request(
 ).loadJSON();
 const widget = await createWidget();
 
-const ASSETS = {
-  header: 'https://raw.githubusercontent.com/trbnhck/scriptable-scripts/main/tagesschau-widget/assets/tagesschau-bg.png',
-  logo: 'https://github.com/trbnhck/scriptable-scripts/blob/main/tagesschau-widget/assets/tagesschau-logo_white.png?raw=true'
-}
 
 if (!config.runsInWidget) {
   await widget.presentMedium();
@@ -23,9 +19,9 @@ async function createWidget() {
 
   w.setPadding(15, 15, 15, 15);
 
-  w.backgroundImage = await loadImage(ASSETS.header);
+  w.backgroundImage = await loadImage('https://raw.githubusercontent.com/trbnhck/scriptable-scripts/main/tagesschau-widget/assets/tagesschau-bg.png');
 
-  const tagesschauLogo = w.addImage(await loadImage(ASSETS.logo));
+  const tagesschauLogo = w.addImage(await loadImage('https://github.com/trbnhck/scriptable-scripts/blob/main/tagesschau-widget/assets/tagesschau-logo_white.png?raw=true'));
   tagesschauLogo.leftAlignImage();
   tagesschauLogo.imageSize = new Size(100, 72);
 
