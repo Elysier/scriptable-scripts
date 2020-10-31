@@ -1,9 +1,12 @@
 const tagesschauData = await new Request(
   'https://www.tagesschau.de/api2/homepage/'
 ).loadJSON();
-const tagesschauHeader =
-  'https://www.tagesschau.de/infoscreen/img/background-16-9-HD.png';
 const widget = await createWidget();
+
+const ASSETS = {
+  header: 'https://raw.githubusercontent.com/trbnhck/scriptable-scripts/main/tagesschau-widget/assets/tagesschau-bg.png',
+  logo: 'https://github.com/trbnhck/scriptable-scripts/blob/main/tagesschau-widget/assets/tagesschau-logo_white.png?raw=true'
+}
 
 if (!config.runsInWidget) {
   await widget.presentMedium();
@@ -20,25 +23,25 @@ async function createWidget() {
 
   w.setPadding(15, 15, 15, 15);
 
-  w.backgroundImage = await loadImage(tagesschauHeader);
+  w.backgroundImage = await loadImage(ASSETS.header);
 
-  const logo = w.addImage(await loadImage('https://i.imgur.com/072c7Zl.png'));
-  logo.leftAlignImage();
-  logo.imageSize = new Size(100, 72);
+  const tagesschauLogo = w.addImage(await loadImage(ASSETS.logo));
+  tagesschauLogo.leftAlignImage();
+  tagesschauLogo.imageSize = new Size(100, 72);
 
-  const title = tagesschauData.news[0].title;
-  const ressort = tagesschauData.news[0].ressort;
+  const titleLabel = tagesschauData.news[0].title;
+  const ressortLabel = tagesschauData.news[0].ressort;
   const date = new Date(tagesschauData.news[0].date);
-  const dateString =
+  const dateLabel =
     date.toLocaleDateString() +
     ', ' +
     ('0' + date.getHours()).slice(-2) +
     ':' +
     ('0' + date.getMinutes()).slice(-2) +
     ' Uhr';
-  const imageUrl = tagesschauData.news[0].teaserImage.videowebl.imageurl;
+  const imageLabel = tagesschauData.news[0].teaserImage.videowebl.imageurl;
 
-  w = await createArticle(w, title, ressort, dateString, imageUrl);
+  w = await createArticle(w, titleLabel, ressortLabel, dateLabel, imageLabel);
 
   w.url = tagesschauData.news[0].shareURL;
 
@@ -72,13 +75,6 @@ async function createArticle(w, title, ressort, date, image) {
   aDate.font = Font.semiboldMonospacedSystemFont(12);
 
   return w;
-}
-
-function createGradient(f, t) {
-  let g = new LinearGradient();
-  g.locations = [0, 1];
-  g.colors = [new Color(f), new Color(t)];
-  return g;
 }
 
 async function loadImage(url) {
