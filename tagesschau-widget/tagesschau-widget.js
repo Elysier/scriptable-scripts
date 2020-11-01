@@ -3,7 +3,7 @@
 // icon-color: deep-blue; icon-glyph: newspaper;
 
 // name: tagesschau-widget.js
-// description: A widget which displays the latest tagesschau.de article 📰
+// description: A scriptable widget which displays the latest tagesschau.de article 📰
 // author: Torben Haack
 // email: haack@hey.com
 
@@ -87,6 +87,7 @@ async function createArticle(listWidget, data) {
   const articleDate = articleInfo.addText(formatDate(date));
   articleDate.font = Font.semiboldMonospacedSystemFont(12);
   articleDate.textOpacity = 0.7;
+  articleDate.textColor = Color.white()
 
   listWidget.addSpacer(10);
 
