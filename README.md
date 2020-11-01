@@ -1,4 +1,4 @@
-# Scritable.app scripts
+# [Scriptable.app](https://scriptable.app) scripts
 
 ## Widgets
 
