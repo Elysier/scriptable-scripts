@@ -52,7 +52,14 @@ async function createWidget() {
 async function createArticle(listWidget, data) {
   const { title, shareURL } = data;
   const date = new Date(data.date);
-  const image = data.teaserImage.videowebl.imageurl;
+  let image;
+  if(data.images[0].videowebs.imageurl) {
+    image = data.images[0].videowebs.imageurl;
+  } else if(data.teaserImage.videowebl.imageurl) {
+    image = data.teaserImage.videowebl.imageurl;
+  } else {
+    image = 'http://www.tagesschau.de/infoscreen/img/background-16-9-HD.png';
+  }
   let { ressort } = data;
 
   if (ressort == undefined) {
