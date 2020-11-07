@@ -161,3 +161,4 @@ function formatDate(dateObject) {
 function leadingZero(input) {
   return ('0' + input).slice(-2);
 }
+//version=1.0
