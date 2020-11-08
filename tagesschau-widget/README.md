@@ -1,22 +1,30 @@
 # tagesschau.de
 
 ## Description
+This widget shows you all the latest news from tagesschau.de.
 
 ## Configuration
+### Options
 ```js
-size: (small/medium/large)
-style: old // (only available on medium size)
+size: (small/medium/large) // Used to set the right styling for the widget
+style: (default/old) // (Only available when using the medium size)
 ```
+
+### Instructions
 1. Touch and hold the widget to open the quick actions menu.
 2. Tap "Edit Widget".
+3. Now type the configuration into the parameter field using the following format: `key: value, key2: value2`
+
+Example:
+<img src="https://imgur.com/eXe6HGk.jpg" height="400px" />
 
 
 ## Preview
 ### Small
-![](https://imgur.com/reOmq2e.png)
+<img src="https://imgur.com/reOmq2e.jpg" height="400px" />
 ### Medium (New/Default)
-![](https://imgur.com/ioeWhiy.png)
+<img src="https://imgur.com/ioeWhiy.jpg" height="400px" />
 ### Medium (Old)
-![](https://imgur.com/KwU2bJW.png)
+<img src="https://imgur.com/KwU2bJW.jpg" height="400px" />
 ### Large
-![](https://imgur.com/e0sbggd.png)
+<img src="https://imgur.com/e0sbggd.jpg" height="400px" />
