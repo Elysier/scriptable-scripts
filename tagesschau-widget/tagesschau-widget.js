@@ -82,14 +82,19 @@ class Tagesschau {
         `${itemQuery}.getElementsByTagName('goto')[0].innerHTML`
       );
 
-      const pageContent = await new Request(link).loadString();
-      const image = pageContent
+      let image;
+      try {
+              const pageContent = await new Request(link).loadString();
+      image = pageContent
         .match(
           /<meta [^>]*property=[\"']og:image[\"'] [^>]*content=[\"']([^'^\"]+?)[\"'][^>]*>/g
         )[0]
         .replace('<meta property="og:image" content="', '')
         .replace('"/>', '')
         .replace('" />', '');
+      } catch {
+        image = 'http://www.tagesschau.de/stoerungsbild100~_v-videowebl.jpg';
+      }
 
       items[i] = {
         date,
@@ -325,3 +330,4 @@ if(!config.runsInWidget) {
 Script.setWidget(widget);
 Script.complete();
 //#endregion
+
