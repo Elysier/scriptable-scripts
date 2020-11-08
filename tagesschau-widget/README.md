@@ -1,7 +1,7 @@
 # tagesschau.de
 
 ## Description
-This widget shows you all the latest news from tagesschau.de.
+A scriptable widget which displays the latest(s) tagesschau.de article(s) 📰
 
 ## Configuration
 ### Options
