@@ -91,6 +91,7 @@ class Tagesschau {
         )[0]
         .replace('<meta property="og:image" content="', '')
         .replace('"/>', '')
+        .replace('">', '')
         .replace('" />', '');
       } catch {
         image = 'http://www.tagesschau.de/stoerungsbild100~_v-videowebl.jpg';
